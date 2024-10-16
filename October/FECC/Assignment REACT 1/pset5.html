@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      return (
+        <div>
+          <img
+            src="https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+          <h1>Automatic Watch</h1>
+          <p>$350.00 USD</p>
+          <h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+            perferendis labore aperiam. Repudiandae, tempore. Tempore quos
+            aliquam, qui molestiae optio perferendis, similique fugiat quia
+            repellat explicabo voluptatibus tempora odit! Temporibus.
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit ex,
+            voluptate tempore possimus omnis doloremque veritatis nemo. Aperiam
+            asperiores adipisci, necessitatibus possimus enim, maxime expedita
+            optio repudiandae neque ratione rerum?
+          </p>
+          <hr />
+          <h3 style={{ color: "#ffb703" }}>Features</h3>
+          <h4>Chronograph</h4>
+          <h4>Master choronometer Certified</h4>
+          <h4>Tachymeter</h4>
+          <hr />
+          <h3 style={{ color: "#ffb703" }}>PRODUCT DETAILS</h3>
+          <p>Between lugs: 20mm</p>
+          <p>Bracelet: Leather Strap</p>
+          <p>Case : Steel</p>
+          <p>Case Diameter: 42mm</p>
+          <p>Dial Color:Black</p>
+          <p>Crystal:Domed , Scratch-Resistant</p>
+          <p>Water Resistant : 5 Bar</p>
+          <br />
+          <button
+            style={{
+              width: "70%",
+              height: "40px",
+              fontSize: "25px",
+              border: "none",
+              color: "white",
+              backgroundColor: "black",
+              cursor: "pointer",
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
+      );
+    }
+    let root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>
