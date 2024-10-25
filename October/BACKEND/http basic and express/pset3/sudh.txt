@@ -1,6 +1,0 @@
-{"name":"ranjan","age":"21","gender":"male"}
-{"name":"ranjan","age":"21","gender":"male"}
-{"name":"ranjan","age":"21","gender":"male"}
-{"name":"ranjan","age":"21","gender":"male"}
-{"name":"ranjan","age":"21","gender":"male"}
-{"name":"ranjan","age":"21","gender":"male"}
