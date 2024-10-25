@@ -1,0 +1,147 @@
+#parent {
+  width: 100%;
+  /* border: 1px solid red; */
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#parent > .child {
+  width: 45%;
+  height: 95%;
+  /* border: 1px solid blue; */
+  /* margin: auto; */
+}
+#left {
+  background-color: White;
+  border-radius: 15vh 1vh 15vh 1vh;
+}
+#right {
+  border-radius: 1vh 15vh 1vh 15vh;
+  background-color: rgb(255, 255, 255);
+}
+body {
+  padding: 0;
+  background-color: #0881eace;
+  margin: 0;
+  color: #0881eace;
+}
+#title {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 80px;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  color: #0881eace;
+  /* text-decoration: underline white; */
+  font-style: normal;
+}
+#inputs {
+  /* border: 1px solid red; */
+  margin: auto;
+  width: 80%;
+  height: 70%;
+  padding-top: 20px;
+  /* text-align: center; */
+}
+label {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+}
+input[type="text"] {
+  width: 60%;
+  height: 20px;
+  border: none; /* Remove all borders */
+  border-bottom: 2px solid #0881eace; /* Add bottom border */
+  background-color: transparent; /* Set background to transparent */
+  outline: none;
+  color: #0881eace;
+
+  padding: 10px;
+  font-size: 1.4rem;
+}
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 27px;
+  width: 27px;
+  border: 2px solid #0881eace;
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #0881eace;
+  position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  left: 8px;
+  top: 2px;
+}
+input[type="checkbox"] {
+  accent-color: #0881eace;
+}
+input::placeholder {
+  color: #0881eace;
+}
+input[type="submit"] {
+  position: relative;
+  left: 35%;
+  border: none;
+  background-color: #0881eace;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 50px;
+  top: 15%;
+  color: #fff;
+  width: 30%;
+  text-align: center;
+  height: 7vh;
+}
+input[type="submit"]:hover {
+  background-color: #06343d;
+}
+select {
+  width: 50%;
+  height: 30px;
+  font-size: 1.3rem;
+  color: #0881eace;
+  background-color: transparent;
+  border: none; /* Remove all borders */
+  border-bottom: 2px solid #0881eace; /* Add bottom border */
+}
+#table {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  height: 80%;
+  /* border: 1px solid red; */
+}
+table,
+td,
+th {
+  border: 1px solid #0881eace;
+  text-align: center;
+  padding: 10px;
+  color: #0881eace;
+}
+
+table {
+  border-collapse: collapse;
+  /* border-radius: 20px; */
+  width: 100%;
+}
+
+th {
+  height: 50px;
+}
