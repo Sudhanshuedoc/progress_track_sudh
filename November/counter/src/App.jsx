@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { legacy_createStore } from "redux";
+import "./App.css";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const INCREMENT = "increment";
+const DECREMENT = "decrement";
+const RESET = "reset";
+function counterReducer(state = 0, { type, payload }) {
+  switch (type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    case RESET:
+      return 0;
+    default:
+      return state;
+  }
 }
 
-export default App
+let store = legacy_createStore(counterReducer);
+
+function App() {
+  let [count, setCount] = useState(0);
+  console.log(store.getState());
+  function handleClick(arg) {
+    store.dispatch({ type: arg });
+    console.log(store.getState(1));
+  }
+  store.subscribe(() => {
+    setCount(count + 1);
+  });
+  return (
+    <>
+      <h1>Count:{store.getState()}</h1>
+      <button
+        onClick={() => {
+          handleClick(INCREMENT);
+        }}
+      >
+        INCREMENT
+      </button>
+      <button
+        onClick={() => {
+          handleClick(DECREMENT);
+        }}
+      >
+        DECREMENT
+      </button>
+      <button
+        onClick={() => {
+          handleClick(RESET);
+        }}
+      >
+        RESET
+      </button>
+    </>
+  );
+}
+
+export default App;
