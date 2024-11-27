@@ -5,8 +5,13 @@
 #tag {
   text-align: center;
 }
+
 .sustain {
   color: #ffb703;
+  /* font-family: "Dancing Script", serif; */
+  font-optical-sizing: auto;
+  font-size: 1.2rem;
+  font-style: normal;
   font-weight: bold;
 }
 /* body {
@@ -20,7 +25,7 @@
 }
 #notio {
   text-align: center;
-  font-size: 50px;
+  font-size: 4rem;
   font-weight: bold;
 }
 #bottom {
@@ -31,11 +36,12 @@
   text-align: center;
 }
 #right {
-  width: 95%;
+  width: 100%;
   /* border: 1px solid red; */
+  max-height: 100vh;
   border-radius: 10px;
   margin: auto;
-  margin-top: 10vh;
+  /* margin-top: 10vh; */
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -56,6 +62,9 @@
   padding: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease; /* Smooth hover transitions */
+}
+#sudhanshu {
+  margin-top: 130px;
 }
 #pagination {
   border: 1px solid blue;
@@ -110,7 +119,7 @@
   align-items: center;
 }
 #footer button {
-  background-color: #ffffff;
+  background-color: #ffb703;
   color: black;
   padding: 5px;
   border-radius: 5px;
@@ -121,7 +130,15 @@
 }
 img {
   position: absolute;
-  width: 60px;
-  top: 12.6vh;
-  left: 20vw;
+  width: 6%;
+  top: 12.5vh;
+  left: 0.5vw;
+  z-index: 0;
+}
+#grid-card span {
+  font-weight: bold;
+  color: #ffb703;
+}
+a {
+  color: #ffb703;
 }

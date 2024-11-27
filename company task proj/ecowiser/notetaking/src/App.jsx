@@ -143,8 +143,9 @@ function Sidebar({ onNoteAdded }) {
 
         <p id="tag">
           where <span className="sustain">sustainability</span> meet{" "}
-          <span className="sustain">Creativity</span>
+          <span className="sustain">Creativity💡</span>
         </p>
+        {/* <img src=".././public/leaf.png" alt="" /> */}
       </div>
       <div id="bottom">
         <Demo data={data} setData={setData} />
@@ -160,7 +161,14 @@ function Sidebar({ onNoteAdded }) {
         >
           Add Note
         </Button>
-        <img src="../public/leaf.png" alt="" />
+        {/* <img src="../public/leaf.png" alt="" /> */}
+        <h1 id="sudhanshu">
+          made with ❤️ by{" "}
+          <a href="https://www.linkedin.com/in/sudhanshu-ranjan-bb0ab0287/">
+            Sudhanshu
+          </a>
+        </h1>
+        <h1>An Ecowiser Initiative 🌱</h1>
       </div>
     </div>
   );
@@ -186,10 +194,16 @@ function RightBar({ data, onDelete, onEdit, arr }) {
       <div id="right">
         {arr.map((ele) => {
           return (
-            <div key={ele.id}>
-              <h2>Title: {ele.title}</h2>
-              <h2>Tagline: {ele.tagline}</h2>
-              <h2>Body: {ele.body}</h2>
+            <div key={ele.id} id="grid-card">
+              <h2>
+                <span>Title</span>: {ele.title}
+              </h2>
+              <h2>
+                <span>Tagline</span>: {ele.tagline}
+              </h2>
+              <h2>
+                <span>Body</span>: {ele.body}
+              </h2>
               <DialogRoot placement="center" motionPreset="fade-in-bottom">
                 <DialogTrigger asChild>
                   <Button
