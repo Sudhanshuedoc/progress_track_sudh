@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
-// import { toaster } from "@/components/ui/toaster";
 import axios from "axios";
+import { Toaster, toaster } from "@/components/ui/toaster";
 
 import "./App.css";
 import {
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Field, Input, defineStyle, Button } from "@chakra-ui/react";
 import { useEffect } from "react";
+import Edit from "./components/edit";
 
 const Demo = ({ data, setData }) => {
   function handleChange(e) {
@@ -115,8 +116,11 @@ function Sidebar({ onNoteAdded }) {
       );
       console.log(request);
       setData({ title: "", tagline: "", body: "" });
-      // Call the callback to refresh the notes list
       await onNoteAdded();
+      toaster.create({
+        description: "Notes created successfully",
+        type: "success",
+      });
     } catch (error) {
       console.error("Error posting data:", error);
     }
@@ -136,6 +140,11 @@ function Sidebar({ onNoteAdded }) {
           ecojot
           <span id="point">.</span>
         </h1>
+
+        <p id="tag">
+          where <span className="sustain">sustainability</span> meet{" "}
+          <span className="sustain">Creativity</span>
+        </p>
       </div>
       <div id="bottom">
         <Demo data={data} setData={setData} />
@@ -151,11 +160,12 @@ function Sidebar({ onNoteAdded }) {
         >
           Add Note
         </Button>
+        <img src="../public/leaf.png" alt="" />
       </div>
     </div>
   );
 }
-function RightBar({ data, onDelete, onEdit }) {
+function RightBar({ data, onDelete, onEdit, arr }) {
   const [editData, setEditData] = useState({
     title: "",
     tagline: "",
@@ -174,7 +184,7 @@ function RightBar({ data, onDelete, onEdit }) {
   return (
     <div style={{ width: "75%", backgroundColor: "#ffffff", height: "100vh" }}>
       <div id="right">
-        {data.map((ele) => {
+        {arr.map((ele) => {
           return (
             <div key={ele.id}>
               <h2>Title: {ele.title}</h2>
@@ -195,7 +205,7 @@ function RightBar({ data, onDelete, onEdit }) {
                     <DialogTitle>Edit your Note</DialogTitle>
                   </DialogHeader>
                   <DialogBody>
-                    <Demo data={editData} setData={setEditData} />
+                    <Edit data={editData} setData={setEditData} />
                   </DialogBody>
                   <DialogFooter>
                     <DialogCloseTrigger asChild>
@@ -211,7 +221,13 @@ function RightBar({ data, onDelete, onEdit }) {
                 variant="outline"
                 size="sm"
                 colorScheme="red"
-                onClick={() => onDelete(ele.id)}
+                onClick={() => {
+                  toaster.create({
+                    description: "Notes deleted successfully",
+                    type: "warning",
+                  });
+                  onDelete(ele.id);
+                }}
               >
                 DELETE
               </Button>
@@ -225,14 +241,35 @@ function RightBar({ data, onDelete, onEdit }) {
 
 function App() {
   const [datas, setData] = useState([]);
+  const [currentpage, setcurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
+  let arr = datas.slice((currentpage - 1) * 6, currentpage * 6);
+  // const [currentpage , setcurrentPage] = useState(0)
+  //todo start from here and start setting up pages for pagination
+  function handleNext() {
+    setcurrentPage((prev) => prev + 1);
+    arr = datas.slice((currentpage - 1) * 6, currentpage * 6);
+    console.log(arr);
+  }
+  function handlePrev() {
+    setcurrentPage((prev) => prev - 1);
+    // arr = datas.slice();
+  }
 
   async function fetchData() {
     try {
       let request = await axios.get("http://localhost:3000/notes");
       let data = request.data;
+      const page = Math.ceil(data.length / 6);
+      setTotalPage(page);
+      console.log(page);
       setData(data);
     } catch (error) {
       console.error("Error fetching notes:", error);
+      toaster.create({
+        description: "failed to fetched notes",
+        type: "error",
+      });
     }
   }
 
@@ -260,14 +297,36 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentpage]);
 
   return (
     <>
       <div id="parent">
         <Sidebar onNoteAdded={fetchData} />
-        <RightBar data={datas} onDelete={handleDelete} onEdit={handleEdit} />
+        <RightBar
+          data={datas}
+          arr={arr}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
+        <div id="footer">
+          <div>
+            <button disabled={currentpage === 1} onClick={handlePrev}>
+              PREV
+            </button>
+          </div>
+          {currentpage}
+          <div>
+            <button
+              disabled={currentpage == totalPage || datas.length == 0}
+              onClick={handleNext}
+            >
+              NEXT
+            </button>
+          </div>
+        </div>
       </div>
+      <Toaster />
     </>
   );
 }

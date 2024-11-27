@@ -1,9 +1,17 @@
 #parent {
   display: flex;
+  background-color: #235951;
 }
-body {
+#tag {
+  text-align: center;
+}
+.sustain {
+  color: #ffb703;
+  font-weight: bold;
+}
+/* body {
   color: black;
-}
+} */
 #top {
   /* border: 1px solid black; */
   height: 35%;
@@ -23,15 +31,14 @@ body {
   text-align: center;
 }
 #right {
-  width: 90%;
+  width: 95%;
   /* border: 1px solid red; */
   border-radius: 10px;
   margin: auto;
-  padding: 20px;
+  margin-top: 10vh;
+  padding: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  position: relative;
-  top: 10vh;
 }
 #point {
   color: #ffb703;
@@ -45,17 +52,33 @@ body {
   font-size: 1.2rem;
   border-radius: 10px;
   /* box-shadow: rgba(245, 60, 60, 0.35) 0px 5px 15px; */
-  box-shadow: rgba(210, 183, 9, 0.919) 0px 1px 2px 0px,
-    rgba(199, 196, 24, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(9, 105, 61, 0.904) 0px 10px 20px;
   padding: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease; /* Smooth hover transitions */
+}
+#pagination {
+  border: 1px solid blue;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  width: 80%;
+}
+#pagination > button {
+  background-color: rgb(169, 206, 239);
+  padding: 10px;
+  margin-left: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#pagination > button:disabled {
+  background-color: rgb(175, 175, 168);
 }
 
 /* Hover effect */
 #right > div:hover {
   transform: translateY(-5px) scale(1); /* Lift and slightly enlarge */
-  box-shadow: rgba(19, 233, 15, 0.904) 0px 10px 20px; /* Enhanced shadow */
+  box-shadow: rgba(9, 105, 61, 0.904) 0px 10px 20px; /* Enhanced shadow */
   /* background-color: rgba(157, 225, 104, 0.1); */
 }
 #right > div h2 {
@@ -76,4 +99,29 @@ body {
 }
 #right button:nth-of-type(1) {
   background-color: white;
+}
+#footer {
+  width: 5%;
+  border-radius: 10px;
+  background-color: #235951;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#footer button {
+  background-color: #ffffff;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#footer button:disabled {
+  background-color: #c9c7c3;
+}
+img {
+  position: absolute;
+  width: 60px;
+  top: 12.6vh;
+  left: 20vw;
 }
