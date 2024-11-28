@@ -272,7 +272,9 @@ function App() {
 
   async function fetchData() {
     try {
-      let request = await axios.get("http://localhost:3000/notes");
+      let request = await axios.get(
+        "https://slender-thinkable-william.glitch.me/notes/"
+      );
       let data = request.data;
       const page = Math.ceil(data.length / 6);
       setTotalPage(page);
@@ -289,7 +291,9 @@ function App() {
 
   async function handleDelete(id) {
     try {
-      await axios.delete(`http://localhost:3000/notes/${id}`);
+      await axios.delete(
+        `https://slender-thinkable-william.glitch.me/notes/${id}`
+      );
       await fetchData();
     } catch (error) {
       console.error("Error deleting note:", error);
@@ -299,7 +303,7 @@ function App() {
   async function handleEdit(editedNote) {
     try {
       await axios.put(
-        `http://localhost:3000/notes/${editedNote.id}`,
+        `https://slender-thinkable-william.glitch.me/notes/${editedNote.id}`,
         JSON.stringify(editedNote),
         { headers: { "Content-Type": "application/json" } }
       );
