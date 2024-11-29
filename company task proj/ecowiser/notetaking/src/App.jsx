@@ -110,7 +110,7 @@ function Sidebar({ onNoteAdded }) {
   async function handleClick() {
     try {
       const request = await axios.post(
-        "http://localhost:3000/notes",
+        "https://slender-thinkable-william.glitch.me/notes/",
         JSON.stringify(data),
         { headers: { "Content-Type": "application/json" } }
       );
@@ -137,7 +137,7 @@ function Sidebar({ onNoteAdded }) {
     >
       <div id="top">
         <h1 id="notio">
-          ecojot
+          🌱ecojot
           <span id="point">.</span>
         </h1>
 

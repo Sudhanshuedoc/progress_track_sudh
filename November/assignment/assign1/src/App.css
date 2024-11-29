@@ -1,0 +1,15 @@
+/*  */
+nav {
+  width: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+}
+nav a {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+}
