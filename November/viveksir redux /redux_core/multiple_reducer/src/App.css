@@ -1,0 +1,10 @@
+button {
+  background-color: rgb(146, 193, 236);
+  padding: 9px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+body {
+  font-family: sans-serif;
+}
