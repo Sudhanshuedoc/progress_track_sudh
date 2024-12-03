@@ -1,11 +1,8 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from "react-redux";
-import viteLogo from "/vite.svg";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-let slice = createSlice({
+let counterSlice = createSlice({
   name: "counter",
   initialState: 0,
   reducers: {
@@ -13,22 +10,29 @@ let slice = createSlice({
     decrement: (state) => state - 1,
   },
 });
-
+let { increment, decrement } = counterSlice.actions;
+let counterReducer = counterSlice.reducer;
 export let store = configureStore({
   reducer: {
-    user: UserReducer,
+    counter: counterReducer,
   },
 });
-let { increment, decrement } = createSlice.actions;
-function App() {
-  // const [count, setCount] = useState(0);
-  let dispatch = useDispatch();
-  let value = useSelector((state) => state.user.value);
-  console.log(value);
 
+function App() {
+  let dispatch = useDispatch();
+  let value = useSelector((state) => state.counter);
+  function handleIncre() {
+    dispatch(increment());
+  }
+  function handleDecre() {
+    dispatch(decrement());
+  }
   return (
     <>
       <h1>Counter</h1>
+      <h2>Count:{value}</h2>
+      <button onClick={handleIncre}>INCREMENT</button>
+      <button onClick={handleDecre}>DECREMENT</button>
     </>
   );
 }
